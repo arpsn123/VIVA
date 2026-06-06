@@ -3,7 +3,7 @@ import json
 
 
 def evaluate_answer(question, answer):
-    prompt = open("app\prompts\evaluator_prompt.txt", encoding="utf-8").read()
+    prompt = open("app\prompts\evaluator_with_structured_json_FEW_SHOT_PROMPTING.txt", encoding="utf-8").read()
     response = chat(
         model="gemma4:e2b",
 
@@ -18,6 +18,7 @@ def evaluate_answer(question, answer):
         ],
     )
     response_text = response.message.content
+    # print(response_text)
     
     try: # try-cath because the LLM sometimes misbehaves;
         # converting the response into JSON;
