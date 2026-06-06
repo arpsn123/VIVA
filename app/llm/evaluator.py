@@ -1,4 +1,5 @@
 from ollama import chat
+import json
 
 
 def evaluate_answer(question, answer):
@@ -16,5 +17,17 @@ def evaluate_answer(question, answer):
             },
         ],
     )
+    response_text = response.message.content
+    
+    try: # try-cath because the LLM sometimes misbehaves;
+        # converting the response into JSON;
+        result = json.loads(response_text)
+    except:
+        result = {
+            "score": 0,
+            "strengths": ["Parsing failed"],
+            "weaknesses": ["Invalid JSON"],
+            "improvement": "Retry"}
 
-    return response.message.content
+    return result
+    # return response.message.content
