@@ -30,12 +30,12 @@ Candidate Answer:
 
 Return ONLY valid JSON.
 
-{
+{{
   "score": 0,
   "strengths": [],
   "weaknesses": [],
   "improvement": ""
-}
+}}
 
 Rules:
 
@@ -58,7 +58,7 @@ A model memorizes training data and performs poorly on unseen data.
 
 Output:
 
-{
+{{
   "score": 8,
   "strengths": [
     "Correct understanding of overfitting"
@@ -67,6 +67,6 @@ Output:
     "Did not mention generalization error"
   ],
   "improvement": "Explain impact on unseen data."
-}
+}}
 """
 )
