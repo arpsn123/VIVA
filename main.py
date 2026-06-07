@@ -1,4 +1,4 @@
-from app.llm.interviewer import generate_question
+from app.llm.interviewer_without_langchain import generate_question
 from app.llm.evaluator import evaluate_answer
 
 print("\n===== VIVA =====\n")
