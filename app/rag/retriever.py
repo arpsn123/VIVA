@@ -30,7 +30,7 @@ def retrieve(query):
 
 # sample testing :
 docs = retrieve(
-    "What is a large lnguage model?"
+    "what do u mean by vector database?"
 )
 
 for doc in docs:
