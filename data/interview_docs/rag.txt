@@ -1,0 +1,926 @@
+TOPIC: Retrieval-Augmented Generation (RAG)
+
+OVERVIEW
+
+RAG stands for Retrieval-Augmented Generation.
+
+It is an AI architecture that combines:
+
+1. Information Retrieval
+2. Large Language Models (LLMs)
+
+The purpose of RAG is to allow an LLM to access external knowledge before generating an answer.
+
+Instead of relying only on knowledge learned during training, a RAG system retrieves relevant information from documents and provides it to the LLM as context.
+
+This significantly improves factual accuracy and enables the use of private or up-to-date information.
+
+---
+
+WHY RAG IS NEEDED
+
+Large Language Models have limitations.
+
+Problems:
+
+1. Hallucinations
+
+The model may generate incorrect information confidently.
+
+2. Knowledge Cutoff
+
+The model only knows information available during training.
+
+3. No Access to Private Data
+
+A company may have internal documents not included in model training.
+
+4. Expensive Fine-Tuning
+
+Retraining or fine-tuning models whenever data changes is costly.
+
+RAG solves these problems by retrieving relevant information at runtime.
+
+---
+
+TRADITIONAL LLM WORKFLOW
+
+User Question
+
+↓
+
+LLM
+
+↓
+
+Generated Answer
+
+Problem:
+
+Answer depends entirely on model memory.
+
+If the information was not present during training, the answer may be wrong.
+
+---
+
+RAG WORKFLOW
+
+User Question
+
+↓
+
+Convert Question to Embedding
+
+↓
+
+Search Vector Database
+
+↓
+
+Retrieve Relevant Documents
+
+↓
+
+Provide Documents as Context
+
+↓
+
+LLM Generates Answer
+
+↓
+
+Final Response
+
+The LLM now answers using retrieved knowledge rather than relying solely on memory.
+
+---
+
+CORE IDEA OF RAG
+
+Instead of asking:
+
+"Answer using only what you know."
+
+We ask:
+
+"First retrieve relevant information, then answer using that information."
+
+This simple change dramatically improves answer quality.
+
+---
+
+KEY COMPONENTS OF A RAG SYSTEM
+
+1. Data Source
+
+Knowledge repository containing:
+
+* PDFs
+* Text files
+* Websites
+* Documentation
+* Databases
+* Internal company documents
+
+2. Chunking
+
+Splitting documents into smaller sections.
+
+3. Embedding Model
+
+Converts text into vectors.
+
+4. Vector Database
+
+Stores embeddings.
+
+5. Retriever
+
+Finds relevant chunks.
+
+6. LLM
+
+Generates the final response.
+
+---
+
+DOCUMENT INGESTION PIPELINE
+
+Before retrieval can happen, documents must be processed.
+
+Pipeline:
+
+Documents
+
+↓
+
+Text Extraction
+
+↓
+
+Chunking
+
+↓
+
+Embedding Generation
+
+↓
+
+Store in Vector Database
+
+This is called indexing or ingestion.
+
+---
+
+STEP 1: DOCUMENT COLLECTION
+
+Knowledge sources may include:
+
+* PDFs
+* DOCX files
+* Web pages
+* Wikis
+* Notion pages
+* Databases
+* Company documentation
+
+Example:
+
+Employee Handbook.pdf
+
+Technical Documentation.pdf
+
+HR Policies.pdf
+
+---
+
+STEP 2: TEXT EXTRACTION
+
+Text must be extracted from files.
+
+Examples:
+
+PDF → Text
+
+DOCX → Text
+
+HTML → Text
+
+OCR may be used for scanned documents.
+
+Popular Tools:
+
+* PyPDF
+* PDFPlumber
+* Unstructured
+* Tesseract OCR
+
+---
+
+STEP 3: CHUNKING
+
+Large documents are divided into smaller pieces.
+
+Example:
+
+100-page document
+
+↓
+
+Chunk 1
+
+Chunk 2
+
+Chunk 3
+
+Chunk 4
+
+Each chunk becomes independently searchable.
+
+---
+
+WHY CHUNKING IS IMPORTANT
+
+Without chunking:
+
+Entire document becomes one embedding.
+
+Problems:
+
+* Poor retrieval
+* Large context size
+* Reduced relevance
+
+With chunking:
+
+Specific sections can be retrieved.
+
+Benefits:
+
+* Better precision
+* Better retrieval quality
+* Lower token usage
+
+---
+
+CHUNKING STRATEGIES
+
+Fixed Size Chunking
+
+Example:
+
+500 tokens per chunk.
+
+Advantages:
+
+* Simple
+
+Disadvantages:
+
+* May break sentences.
+
+---
+
+Recursive Chunking
+
+Splits using:
+
+Paragraphs
+
+↓
+
+Sentences
+
+↓
+
+Words
+
+Advantages:
+
+* Preserves meaning
+
+Widely used in production systems.
+
+---
+
+Semantic Chunking
+
+Chunks are created based on meaning.
+
+Advantages:
+
+* High retrieval quality
+
+Disadvantages:
+
+* More computationally expensive
+
+---
+
+STEP 4: EMBEDDING GENERATION
+
+Each chunk is converted into a vector.
+
+Example:
+
+Chunk:
+
+"Neural networks are inspired by biological neurons."
+
+Embedding:
+
+[0.23, -0.54, 0.87, ...]
+
+The vector captures semantic meaning.
+
+---
+
+EMBEDDING MODELS
+
+Popular Models:
+
+OpenAI Embeddings
+
+Sentence Transformers
+
+BGE
+
+E5
+
+MiniLM
+
+MPNet
+
+The quality of retrieval depends heavily on embedding quality.
+
+---
+
+STEP 5: VECTOR STORAGE
+
+Embeddings are stored in a vector database.
+
+Popular Vector Databases:
+
+* ChromaDB
+* Pinecone
+* Qdrant
+* Weaviate
+* Milvus
+* FAISS
+
+These databases enable fast similarity search.
+
+---
+
+STEP 6: USER QUERY
+
+User asks:
+
+"What is transfer learning?"
+
+The query enters the retrieval pipeline.
+
+---
+
+STEP 7: QUERY EMBEDDING
+
+The question is converted into an embedding.
+
+Example:
+
+"What is transfer learning?"
+
+↓
+
+[0.45, -0.21, 0.88, ...]
+
+Now both:
+
+Documents
+
+and
+
+Query
+
+exist in the same vector space.
+
+---
+
+STEP 8: RETRIEVAL
+
+Similarity search finds the most relevant chunks.
+
+Metrics:
+
+* Cosine Similarity
+* Euclidean Distance
+* Dot Product
+
+Top K retrieval is commonly used.
+
+Example:
+
+Top 5 most similar chunks.
+
+---
+
+TOP-K RETRIEVAL
+
+K represents the number of retrieved chunks.
+
+Examples:
+
+K = 3
+
+K = 5
+
+K = 10
+
+Tradeoff:
+
+Small K
+
+* Faster
+* Less context
+
+Large K
+
+* More information
+* More tokens
+* Higher cost
+
+---
+
+STEP 9: CONTEXT AUGMENTATION
+
+Retrieved chunks are inserted into the prompt.
+
+Example:
+
+Context:
+
+Chunk 1
+
+Chunk 2
+
+Chunk 3
+
+Question:
+
+"What is transfer learning?"
+
+The LLM now receives both:
+
+Context
+
+and
+
+Question
+
+---
+
+STEP 10: GENERATION
+
+The LLM generates an answer using retrieved context.
+
+This is the Generation stage of RAG.
+
+---
+
+RAG PROMPT TEMPLATE
+
+System:
+
+Answer only from the provided context.
+
+Context:
+
+[Retrieved Chunks]
+
+Question:
+
+[User Query]
+
+Answer:
+
+[Generated Response]
+
+---
+
+RAG VS FINE-TUNING
+
+RAG
+
+* External knowledge
+* Easy updates
+* Lower cost
+* Real-time information
+
+Fine-Tuning
+
+* Changes model behavior
+* Requires training
+* Expensive
+* Data updates require retraining
+
+Interview Answer:
+
+RAG is used to inject knowledge.
+
+Fine-tuning is used to change behavior.
+
+---
+
+NAIVE RAG
+
+Basic architecture:
+
+Query
+
+↓
+
+Embedding
+
+↓
+
+Vector Search
+
+↓
+
+Retrieved Chunks
+
+↓
+
+LLM
+
+Simple but effective.
+
+---
+
+ADVANCED RAG
+
+Includes additional stages:
+
+Query
+
+↓
+
+Query Expansion
+
+↓
+
+Hybrid Search
+
+↓
+
+Re-ranking
+
+↓
+
+Context Compression
+
+↓
+
+LLM
+
+Provides significantly better results.
+
+---
+
+HYBRID SEARCH
+
+Combines:
+
+Keyword Search
+
+*
+
+Vector Search
+
+Benefits:
+
+* Semantic matching
+* Exact keyword matching
+
+Often outperforms pure vector search.
+
+---
+
+RE-RANKING
+
+Initial retrieval:
+
+Top 20 chunks
+
+↓
+
+Re-Ranker Model
+
+↓
+
+Top 5 chunks
+
+↓
+
+LLM
+
+Purpose:
+
+Improve relevance before generation.
+
+Popular Re-rankers:
+
+* Cross Encoders
+* BGE Reranker
+
+---
+
+QUERY EXPANSION
+
+Improves retrieval by rewriting queries.
+
+Example:
+
+User Query:
+
+"Transformers"
+
+Expanded Query:
+
+"Transformer architecture in deep learning"
+
+Benefits:
+
+* Better retrieval accuracy
+
+---
+
+MULTI-QUERY RAG
+
+Generate multiple search queries.
+
+Example:
+
+Original Query:
+
+"What is machine learning?"
+
+Generated Queries:
+
+"What are ML algorithms?"
+
+"Machine learning basics"
+
+"Definition of machine learning"
+
+Results are merged.
+
+Benefits:
+
+* Improved recall
+
+---
+
+CONTEXT COMPRESSION
+
+Reduces retrieved content before sending to the LLM.
+
+Benefits:
+
+* Lower token cost
+* Faster generation
+
+---
+
+AGENTIC RAG
+
+Modern RAG systems may use agents.
+
+Capabilities:
+
+* Multiple retrieval steps
+* Reasoning
+* Tool usage
+* Iterative searching
+
+Often used in enterprise AI systems.
+
+---
+
+RAG EVALUATION METRICS
+
+Retrieval Metrics
+
+Precision
+
+Recall
+
+MRR
+
+NDCG
+
+Generation Metrics
+
+Faithfulness
+
+Answer Relevance
+
+Groundedness
+
+Correctness
+
+---
+
+HALLUCINATION REDUCTION
+
+One major advantage of RAG is reducing hallucinations.
+
+Reason:
+
+The model answers from retrieved evidence rather than memory.
+
+However:
+
+Poor retrieval still causes hallucinations.
+
+---
+
+COMMON CHALLENGES
+
+Bad Chunking
+
+Poor Embeddings
+
+Weak Retrieval
+
+Context Window Limits
+
+Duplicate Chunks
+
+Irrelevant Retrieval
+
+Data Freshness
+
+Metadata Quality
+
+---
+
+METADATA FILTERING
+
+Example:
+
+Search only:
+
+Department = HR
+
+Year = 2026
+
+Benefits:
+
+* More precise retrieval
+* Better relevance
+
+---
+
+REAL-WORLD APPLICATIONS
+
+Enterprise Chatbots
+
+Customer Support
+
+Document Search
+
+Knowledge Management
+
+Legal Research
+
+Medical Research
+
+Financial Analysis
+
+Internal Company Assistants
+
+Code Assistants
+
+Educational Tutors
+
+---
+
+POPULAR RAG FRAMEWORKS
+
+LangChain
+
+LlamaIndex
+
+Haystack
+
+DSPy
+
+Semantic Kernel
+
+These frameworks simplify RAG development.
+
+---
+
+ADVANTAGES OF RAG
+
+* Reduced hallucinations
+* Access to private knowledge
+* Real-time updates
+* No retraining required
+* Lower cost than fine-tuning
+* Better factual accuracy
+* Scalable knowledge management
+
+---
+
+LIMITATIONS OF RAG
+
+* Depends on retrieval quality
+* Additional infrastructure required
+* Embedding costs
+* Context window limitations
+* Retrieval latency
+
+---
+
+COMMON INTERVIEW QUESTIONS
+
+Q: What is RAG?
+
+A: Retrieval-Augmented Generation is a system that retrieves relevant information from an external knowledge source before generating an answer.
+
+Q: Why is RAG needed?
+
+A: To reduce hallucinations, access private data, and provide up-to-date information.
+
+Q: What are the main components of a RAG system?
+
+A: Documents, chunking, embeddings, vector database, retriever, and LLM.
+
+Q: Why is chunking important?
+
+A: It improves retrieval accuracy by allowing smaller, focused sections to be searched.
+
+Q: What is Top-K retrieval?
+
+A: Retrieving the K most relevant chunks from a vector database.
+
+Q: Difference between RAG and fine-tuning?
+
+A: RAG injects external knowledge, while fine-tuning changes model behavior.
+
+Q: What is hybrid search?
+
+A: Combining keyword-based and vector-based retrieval.
+
+Q: What is re-ranking?
+
+A: Reordering retrieved results to improve relevance.
+
+Q: Which databases are commonly used in RAG?
+
+A: Pinecone, ChromaDB, Qdrant, Weaviate, Milvus, and FAISS.
+
+Q: How does RAG reduce hallucinations?
+
+A: By grounding responses in retrieved evidence rather than relying solely on model memory.
+
+---
+
+IMPORTANT TERMS
+
+RAG
+Retrieval-Augmented Generation
+Retriever
+Generator
+Embedding
+Vector
+Chunking
+Semantic Search
+Similarity Search
+Vector Database
+ChromaDB
+Pinecone
+Qdrant
+Weaviate
+Milvus
+FAISS
+Cosine Similarity
+Top-K Retrieval
+Metadata Filtering
+Hybrid Search
+Re-ranking
+Query Expansion
+Multi-Query RAG
+Context Compression
+Agentic RAG
+Groundedness
+Faithfulness
+Hallucination
+Knowledge Base
+LangChain
+LlamaIndex
+Haystack
+DSPy
+Semantic Kernel

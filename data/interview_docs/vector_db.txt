@@ -1,0 +1,769 @@
+TOPIC: Vector Databases
+
+OVERVIEW
+
+A Vector Database is a specialized database designed to store, index, and search high-dimensional vectors called embeddings.
+
+Vector databases are a fundamental component of modern AI systems, especially:
+
+* Retrieval-Augmented Generation (RAG)
+* Semantic Search
+* Recommendation Systems
+* AI Assistants
+* Chatbots
+* Similarity Search Applications
+
+Traditional databases search for exact matches, while vector databases search for semantically similar information.
+
+---
+
+WHY DO WE NEED VECTOR DATABASES?
+
+Consider a document collection containing thousands of documents.
+
+User Query:
+
+"How do neural networks learn?"
+
+A traditional SQL database searches for exact keywords.
+
+Problems:
+
+* May miss relevant documents
+* Cannot understand meaning
+* Fails on synonyms
+
+Example:
+
+Query:
+"Automobile"
+
+Document:
+"Car"
+
+Traditional search may not match.
+
+Vector databases solve this problem by searching based on meaning rather than exact words.
+
+---
+
+THE CORE IDEA
+
+Every document is converted into an embedding vector.
+
+Example:
+
+Document A:
+"What is Machine Learning?"
+
+Embedding:
+[0.21, -0.55, 0.88, ...]
+
+Document B:
+"Introduction to Neural Networks"
+
+Embedding:
+[0.18, -0.51, 0.91, ...]
+
+Similar documents produce similar vectors.
+
+These vectors are stored inside a vector database.
+
+---
+
+WHAT IS A VECTOR?
+
+A vector is an ordered list of numbers.
+
+Example:
+
+[0.12, 0.55, -0.33, 0.71]
+
+Embedding models typically generate vectors with hundreds or thousands of dimensions.
+
+Examples:
+
+* 384 dimensions
+* 768 dimensions
+* 1024 dimensions
+* 1536 dimensions
+* 3072 dimensions
+
+Each dimension captures learned semantic information.
+
+---
+
+HOW VECTOR DATABASES WORK
+
+Step 1:
+Collect documents.
+
+Step 2:
+Generate embeddings using an embedding model.
+
+Example Models:
+
+* OpenAI Embeddings
+* Sentence Transformers
+* BGE
+* E5
+
+Step 3:
+Store embeddings in a vector database.
+
+Step 4:
+User submits a query.
+
+Step 5:
+Convert query into an embedding.
+
+Step 6:
+Perform similarity search.
+
+Step 7:
+Return the most relevant chunks.
+
+---
+
+VECTOR DATABASE ARCHITECTURE
+
+Main Components:
+
+1. Embedding Model
+2. Vector Storage
+3. Vector Index
+4. Similarity Search Engine
+5. Metadata Store
+
+Together these components enable fast semantic retrieval.
+
+---
+
+SIMILARITY SEARCH
+
+Similarity search finds vectors that are closest to a query vector.
+
+Example:
+
+Query:
+"Explain transformers"
+
+The query embedding is compared against stored document embeddings.
+
+The nearest vectors are returned.
+
+This process powers RAG systems.
+
+---
+
+SIMILARITY METRICS
+
+1. Cosine Similarity
+
+Most popular metric.
+
+Measures angle between vectors.
+
+Range:
+
+-1 to 1
+
+Interpretation:
+
+1 = Identical direction
+
+0 = No relation
+
+-1 = Opposite direction
+
+Higher score means greater similarity.
+
+---
+
+2. Euclidean Distance
+
+Measures straight-line distance between vectors.
+
+Smaller distance indicates greater similarity.
+
+Applications:
+
+* Clustering
+* KNN
+* Vector Search
+
+---
+
+3. Dot Product
+
+Measures alignment between vectors.
+
+Frequently used in:
+
+* Deep Learning
+* Recommendation Systems
+* Retrieval Models
+
+---
+
+WHY VECTOR SEARCH IS HARD
+
+Searching among millions of vectors is computationally expensive.
+
+Example:
+
+1 million vectors
+
+Query vector must be compared with every vector.
+
+This is called brute-force search.
+
+Problems:
+
+* Slow
+* Expensive
+* Poor scalability
+
+Vector databases solve this using specialized indexing algorithms.
+
+---
+
+EXACT SEARCH
+
+Also called brute-force search.
+
+Method:
+
+Compare query against every vector.
+
+Advantages:
+
+* Perfect accuracy
+
+Disadvantages:
+
+* Slow for large datasets
+
+Time Complexity:
+
+O(N)
+
+---
+
+APPROXIMATE NEAREST NEIGHBOR (ANN)
+
+ANN is the foundation of modern vector databases.
+
+Purpose:
+
+Find vectors that are extremely close without checking every vector.
+
+Advantages:
+
+* Much faster
+* Scales to millions or billions of vectors
+
+Tradeoff:
+
+Slight loss in accuracy for massive speed improvements.
+
+---
+
+HNSW
+
+HNSW stands for:
+
+Hierarchical Navigable Small World
+
+One of the most popular ANN algorithms.
+
+Main Idea:
+
+Creates multiple graph layers connecting similar vectors.
+
+Search starts at upper layers and gradually moves toward the closest vectors.
+
+Advantages:
+
+* Extremely fast
+* High accuracy
+* Widely used
+
+Used by:
+
+* Qdrant
+* Weaviate
+* ChromaDB
+* Milvus
+
+---
+
+IVF
+
+IVF stands for:
+
+Inverted File Index
+
+Main Idea:
+
+Group vectors into clusters.
+
+During search:
+
+Only relevant clusters are examined.
+
+Advantages:
+
+* Fast retrieval
+* Reduced computation
+
+Often combined with:
+
+* Product Quantization
+
+---
+
+PRODUCT QUANTIZATION (PQ)
+
+Purpose:
+
+Reduce memory usage.
+
+Method:
+
+Compress vectors into compact representations.
+
+Advantages:
+
+* Lower storage requirements
+* Faster retrieval
+
+Common in very large datasets.
+
+---
+
+METADATA
+
+Vector databases can store additional information alongside embeddings.
+
+Example:
+
+Document:
+
+"Introduction to RAG"
+
+Metadata:
+
+{
+source: "AI Handbook",
+author: "John",
+chapter: "RAG"
+}
+
+Benefits:
+
+* Filtering
+* Categorization
+* Access control
+
+---
+
+METADATA FILTERING
+
+Example Query:
+
+"Find RAG documents from 2025"
+
+Vector Search:
+Find semantically relevant documents.
+
+Metadata Filter:
+Year = 2025
+
+Result:
+More precise retrieval.
+
+---
+
+CHUNKING
+
+Large documents are usually divided into smaller pieces.
+
+Example:
+
+100-page PDF
+
+Split into:
+
+Chunk 1
+Chunk 2
+Chunk 3
+Chunk 4
+
+Each chunk receives its own embedding.
+
+Benefits:
+
+* Better retrieval accuracy
+* More relevant context
+* Faster search
+
+---
+
+VECTOR DATABASES IN RAG
+
+RAG stands for Retrieval-Augmented Generation.
+
+Workflow:
+
+Step 1:
+Load documents.
+
+Step 2:
+Chunk documents.
+
+Step 3:
+Generate embeddings.
+
+Step 4:
+Store embeddings in vector database.
+
+Step 5:
+User asks a question.
+
+Step 6:
+Generate query embedding.
+
+Step 7:
+Retrieve top matching chunks.
+
+Step 8:
+Pass chunks to LLM.
+
+Step 9:
+Generate final answer.
+
+Without vector databases, large-scale semantic retrieval becomes difficult.
+
+---
+
+POPULAR VECTOR DATABASES
+
+---
+
+FAISS
+
+Developed by Meta.
+
+Full Form:
+
+Facebook AI Similarity Search
+
+Characteristics:
+
+* Open source
+* Extremely fast
+* Runs locally
+* Supports ANN indexing
+
+Advantages:
+
+* Lightweight
+* Highly optimized
+
+Limitations:
+
+* Not a complete database
+* No built-in cloud management
+
+---
+
+CHROMADB
+
+Open-source vector database.
+
+Popular among RAG developers.
+
+Advantages:
+
+* Easy setup
+* Python-friendly
+* Lightweight
+* Good for prototypes
+
+Applications:
+
+* Local RAG
+* AI assistants
+* Knowledge bases
+
+---
+
+PINECONE
+
+Managed cloud vector database.
+
+Advantages:
+
+* Fully managed
+* Scalable
+* Production ready
+
+Applications:
+
+* Enterprise AI
+* Large-scale RAG
+
+---
+
+QDRANT
+
+Open-source vector database.
+
+Features:
+
+* HNSW indexing
+* Metadata filtering
+* High performance
+
+Popular for production deployments.
+
+---
+
+WEAVIATE
+
+Open-source vector database.
+
+Features:
+
+* Built-in modules
+* Semantic search
+* Hybrid search
+
+Supports:
+
+* Text search
+* Vector search
+
+---
+
+MILVUS
+
+Highly scalable vector database.
+
+Advantages:
+
+* Distributed architecture
+* Enterprise scale
+* Billion-vector support
+
+Applications:
+
+* Large AI platforms
+* Industrial systems
+
+---
+
+HYBRID SEARCH
+
+Combines:
+
+1. Keyword Search
+2. Vector Search
+
+Example:
+
+Keyword Search:
+Exact matches
+
+Vector Search:
+Semantic matches
+
+Benefits:
+
+* Better retrieval quality
+* Improved accuracy
+
+Used by many production RAG systems.
+
+---
+
+RE-RANKING
+
+After retrieval:
+
+A re-ranking model reorders results.
+
+Purpose:
+
+Improve relevance.
+
+Workflow:
+
+Vector Search
+→ Top 20 Results
+
+Re-Ranker
+→ Best 5 Results
+
+Then send to LLM.
+
+Benefits:
+
+* Better answer quality
+* Improved context selection
+
+---
+
+SCALABILITY CHALLENGES
+
+Large systems may store:
+
+* Millions of vectors
+* Hundreds of millions of vectors
+* Billions of vectors
+
+Challenges:
+
+* Storage
+* Search latency
+* Memory usage
+* Index maintenance
+
+Modern vector databases solve these through ANN indexing and distributed architectures.
+
+---
+
+REAL-WORLD APPLICATIONS
+
+RAG Systems
+
+Retrieve relevant context before generation.
+
+Semantic Search
+
+Search by meaning instead of keywords.
+
+Recommendation Systems
+
+Recommend movies, products, or content.
+
+Customer Support
+
+Search knowledge bases.
+
+Enterprise Search
+
+Search internal company documents.
+
+Fraud Detection
+
+Find similar suspicious patterns.
+
+Medical Research
+
+Search scientific papers.
+
+Legal Document Search
+
+Find relevant legal precedents.
+
+---
+
+ADVANTAGES OF VECTOR DATABASES
+
+* Semantic understanding
+* Fast similarity search
+* Scalable retrieval
+* Essential for RAG
+* Metadata filtering
+* Hybrid search support
+* ANN indexing support
+
+---
+
+LIMITATIONS
+
+* Additional infrastructure
+* Embedding generation cost
+* Storage requirements
+* Retrieval quality depends on embeddings
+* ANN may sacrifice small amounts of accuracy
+
+---
+
+COMMON INTERVIEW QUESTIONS
+
+Q: What is a Vector Database?
+
+A: A specialized database optimized for storing and searching embeddings using similarity search.
+
+Q: Why not use SQL databases for semantic search?
+
+A: SQL databases excel at exact matching but cannot efficiently perform high-dimensional similarity searches.
+
+Q: What is similarity search?
+
+A: Finding vectors closest to a query vector based on a similarity metric.
+
+Q: What is ANN?
+
+A: Approximate Nearest Neighbor search, a technique that finds near-optimal matches much faster than brute-force search.
+
+Q: What is HNSW?
+
+A: A graph-based ANN indexing algorithm widely used in modern vector databases.
+
+Q: What is metadata filtering?
+
+A: Filtering search results using additional attributes such as date, author, or category.
+
+Q: Why is chunking important in RAG?
+
+A: It improves retrieval accuracy by embedding smaller, focused sections of content.
+
+Q: Difference between FAISS and Pinecone?
+
+A: FAISS is a local similarity search library, while Pinecone is a managed cloud vector database.
+
+Q: What is hybrid search?
+
+A: Combining keyword-based and vector-based retrieval.
+
+Q: Why are vector databases important for RAG?
+
+A: They efficiently retrieve semantically relevant context that can be provided to an LLM before answer generation.
+
+---
+
+IMPORTANT TERMS
+
+Vector Database
+Embedding
+Vector
+Similarity Search
+Semantic Search
+ANN
+Approximate Nearest Neighbor
+HNSW
+IVF
+PQ
+Metadata
+Metadata Filtering
+Chunking
+RAG
+Cosine Similarity
+Euclidean Distance
+Dot Product
+FAISS
+ChromaDB
+Pinecone
+Qdrant
+Weaviate
+Milvus
+Hybrid Search
+Re-ranking
+Indexing
+Nearest Neighbor Search
+Vector Retrieval
+Knowledge Retrieval

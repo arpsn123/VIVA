@@ -1,0 +1,643 @@
+TOPIC: Computer Vision
+
+OVERVIEW
+
+Computer Vision is a field of Artificial Intelligence that enables computers to understand, analyze, and extract meaningful information from images and videos. The goal of computer vision is to replicate and automate tasks that the human visual system can perform.
+
+Computer vision combines image processing, machine learning, deep learning, and pattern recognition techniques to interpret visual data.
+
+Common applications include facial recognition, autonomous vehicles, medical image analysis, surveillance systems, object detection, OCR, industrial quality inspection, and augmented reality.
+
+---
+
+WHAT IS AN IMAGE?
+
+A digital image is a collection of pixels arranged in a grid.
+
+Pixel:
+The smallest unit of an image.
+
+Each pixel contains intensity values.
+
+For grayscale images:
+
+* Pixel values range from 0 to 255
+* 0 = Black
+* 255 = White
+
+For color images:
+Each pixel contains three channels:
+
+* Red (R)
+* Green (G)
+* Blue (B)
+
+Example:
+Pixel = (255, 0, 0) represents pure red.
+
+---
+
+IMAGE TYPES
+
+1. Grayscale Image
+
+Contains a single intensity channel.
+
+Advantages:
+
+* Smaller memory usage
+* Faster processing
+
+Applications:
+
+* Medical imaging
+* Document processing
+
+2. RGB Image
+
+Contains Red, Green, and Blue channels.
+
+Applications:
+
+* Object detection
+* Classification
+* Facial recognition
+
+3. Binary Image
+
+Contains only:
+
+* Black (0)
+* White (255)
+
+Applications:
+
+* OCR
+* Segmentation
+
+---
+
+IMAGE PROCESSING
+
+Image Processing refers to operations performed directly on images to improve quality or extract useful information.
+
+Common Operations:
+
+1. Resizing
+
+Changes image dimensions.
+
+Purpose:
+
+* Standardize input size for neural networks
+* Reduce computation
+
+2. Cropping
+
+Removes unwanted regions.
+
+3. Rotation
+
+Rotates image by a specified angle.
+
+4. Flipping
+
+Horizontal flip
+Vertical flip
+
+Commonly used for data augmentation.
+
+5. Blurring
+
+Smooths image and reduces noise.
+
+Common techniques:
+
+* Gaussian Blur
+* Average Blur
+* Median Blur
+
+6. Sharpening
+
+Enhances edges and details.
+
+---
+
+IMAGE FILTERS
+
+Filters are mathematical operations applied to images.
+
+Purpose:
+
+* Noise removal
+* Edge detection
+* Feature extraction
+
+Examples:
+
+Gaussian Filter
+Reduces image noise.
+
+Median Filter
+Effective against salt-and-pepper noise.
+
+Laplacian Filter
+Highlights edges.
+
+---
+
+EDGE DETECTION
+
+Edge detection identifies boundaries between objects.
+
+Why Important?
+
+Objects are often defined by their edges.
+
+Popular Methods:
+
+1. Sobel Edge Detector
+
+Detects horizontal and vertical gradients.
+
+2. Canny Edge Detector
+
+Most widely used.
+
+Steps:
+
+* Noise reduction
+* Gradient calculation
+* Non-maximum suppression
+* Double thresholding
+* Edge tracking
+
+Advantages:
+
+* Accurate
+* Robust
+
+---
+
+FEATURE EXTRACTION
+
+Feature extraction identifies important patterns from images.
+
+Examples of Features:
+
+* Corners
+* Edges
+* Textures
+* Shapes
+
+Traditional Feature Extraction Techniques:
+
+SIFT
+Scale-Invariant Feature Transform
+
+Advantages:
+
+* Scale invariant
+* Rotation invariant
+
+SURF
+Speeded-Up Robust Features
+
+Faster than SIFT.
+
+ORB
+Oriented FAST and Rotated BRIEF
+
+Advantages:
+
+* Fast
+* Open-source
+* Lightweight
+
+---
+
+IMAGE SEGMENTATION
+
+Image segmentation divides an image into meaningful regions.
+
+Purpose:
+Identify individual objects or areas.
+
+Types:
+
+1. Semantic Segmentation
+
+Labels each pixel according to class.
+
+Example:
+Road, Car, Person
+
+2. Instance Segmentation
+
+Separates individual objects.
+
+Example:
+Person 1
+Person 2
+Person 3
+
+Applications:
+
+* Self-driving cars
+* Medical imaging
+
+---
+
+IMAGE CLASSIFICATION
+
+Definition:
+
+Assigning a label to an image.
+
+Examples:
+
+Image:
+Cat
+
+Prediction:
+Cat
+
+Image:
+Dog
+
+Prediction:
+Dog
+
+Popular Models:
+
+* LeNet
+* AlexNet
+* VGG
+* ResNet
+* EfficientNet
+
+Applications:
+
+* Medical diagnosis
+* Wildlife recognition
+* Product categorization
+
+---
+
+OBJECT DETECTION
+
+Definition:
+
+Detecting objects and locating them using bounding boxes.
+
+Output:
+
+* Class label
+* Bounding box coordinates
+
+Example:
+
+Object:
+Car
+
+Location:
+(x1, y1, x2, y2)
+
+Popular Models:
+
+R-CNN
+Fast R-CNN
+Faster R-CNN
+SSD
+YOLO
+
+Applications:
+
+* Autonomous vehicles
+* Security systems
+* Retail analytics
+
+---
+
+YOLO
+
+YOLO stands for:
+You Only Look Once
+
+Key Idea:
+
+Processes the entire image in a single forward pass.
+
+Advantages:
+
+* Very fast
+* Real-time detection
+
+Popular Versions:
+
+* YOLOv3
+* YOLOv5
+* YOLOv8
+* YOLOv11
+
+Interview Question:
+
+Why is YOLO faster than R-CNN?
+
+Answer:
+YOLO performs object detection in a single neural network pass, while R-CNN-based models perform multiple stages including region proposal generation and classification.
+
+---
+
+CONVOLUTIONAL NEURAL NETWORKS (CNN)
+
+CNNs are specialized neural networks for image processing.
+
+Main Components:
+
+1. Convolution Layer
+
+Extracts features using filters.
+
+Detects:
+
+* Edges
+* Textures
+* Shapes
+
+2. Activation Function
+
+Usually ReLU.
+
+Adds non-linearity.
+
+3. Pooling Layer
+
+Reduces feature map dimensions.
+
+Types:
+
+* Max Pooling
+* Average Pooling
+
+Benefits:
+
+* Reduced computation
+* Better generalization
+
+4. Fully Connected Layer
+
+Performs final classification.
+
+---
+
+CONVOLUTION OPERATION
+
+A filter slides across an image.
+
+At each position:
+
+* Element-wise multiplication
+* Summation
+
+Result:
+Feature Map
+
+Purpose:
+Detect visual patterns.
+
+---
+
+POOLING
+
+Pooling reduces spatial dimensions.
+
+Max Pooling:
+
+Selects maximum value from a region.
+
+Example:
+
+Input:
+
+1 2
+4 8
+
+Output:
+8
+
+Advantages:
+
+* Reduces overfitting
+* Reduces computation
+
+---
+
+TRANSFER LEARNING
+
+Definition:
+
+Using a pretrained model and adapting it for a new task.
+
+Popular Pretrained Models:
+
+* ResNet
+* EfficientNet
+* MobileNet
+* VGG
+
+Advantages:
+
+* Faster training
+* Less data required
+* Better performance
+
+---
+
+DATA AUGMENTATION
+
+Creates new training samples from existing images.
+
+Techniques:
+
+* Rotation
+* Flip
+* Zoom
+* Brightness adjustment
+* Translation
+* Cropping
+
+Benefits:
+
+* Reduces overfitting
+* Improves generalization
+
+---
+
+COMPUTER VISION METRICS
+
+Accuracy
+
+Percentage of correct predictions.
+
+Precision
+
+Measures correctness of positive predictions.
+
+Precision = TP / (TP + FP)
+
+Recall
+
+Measures ability to find positives.
+
+Recall = TP / (TP + FN)
+
+F1 Score
+
+Harmonic mean of Precision and Recall.
+
+Intersection over Union (IoU)
+
+Used in object detection.
+
+IoU = Area of Overlap / Area of Union
+
+Higher IoU indicates better localization.
+
+mAP
+
+Mean Average Precision.
+
+Most common object detection metric.
+
+---
+
+OCR
+
+OCR stands for Optical Character Recognition.
+
+Purpose:
+Extract text from images.
+
+Applications:
+
+* Invoice processing
+* Document digitization
+* License plate recognition
+
+Popular Tools:
+
+* Tesseract OCR
+* EasyOCR
+
+---
+
+OPENCV
+
+OpenCV stands for Open Source Computer Vision Library.
+
+Popular computer vision library.
+
+Capabilities:
+
+* Image processing
+* Video processing
+* Object detection
+* Face detection
+* Tracking
+
+Advantages:
+
+* Open source
+* Fast
+* Cross-platform
+
+---
+
+REAL-WORLD APPLICATIONS
+
+Autonomous Vehicles
+Detect roads, pedestrians, traffic signs, and vehicles.
+
+Healthcare
+Analyze X-rays, MRI scans, and CT scans.
+
+Security
+Facial recognition and surveillance.
+
+Retail
+Customer analytics and inventory monitoring.
+
+Agriculture
+Crop disease detection.
+
+Manufacturing
+Defect detection and quality inspection.
+
+---
+
+COMMON INTERVIEW QUESTIONS
+
+Q: What is Computer Vision?
+A: Computer Vision is a field of AI that enables computers to interpret and understand visual information from images and videos.
+
+Q: Difference between Image Classification and Object Detection?
+A: Classification predicts what is in an image, while Object Detection predicts what is present and where it is located.
+
+Q: What is CNN?
+A: A Convolutional Neural Network designed specifically for image-related tasks using convolution layers.
+
+Q: Why is pooling used in CNNs?
+A: To reduce spatial dimensions, computation, and overfitting.
+
+Q: What is Transfer Learning?
+A: Reusing a pretrained model for a new task.
+
+Q: What is IoU?
+A: A metric used to evaluate bounding box accuracy in object detection.
+
+Q: What is YOLO?
+A: A real-time object detection model that performs detection in a single pass through the network.
+
+Q: What is Data Augmentation?
+A: Techniques used to generate additional training data by transforming existing images.
+
+Q: What is OCR?
+A: Technology that extracts text from images.
+
+Q: Why is OpenCV popular?
+A: It provides fast, efficient, and open-source tools for computer vision applications.
+
+---
+
+IMPORTANT TERMS
+
+Computer Vision
+Image Processing
+Pixel
+RGB
+Grayscale
+Edge Detection
+Feature Extraction
+SIFT
+SURF
+ORB
+Segmentation
+Image Classification
+Object Detection
+Bounding Box
+CNN
+Convolution
+Pooling
+Transfer Learning
+Data Augmentation
+YOLO
+IoU
+mAP
+OCR
+OpenCV
+ResNet
+EfficientNet
+MobileNet
+Semantic Segmentation
+Instance Segmentation
