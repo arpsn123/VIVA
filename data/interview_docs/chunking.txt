@@ -1,0 +1,128 @@
+TOPIC: Chunking
+
+DEFINITION
+
+Chunking is the process of splitting large documents into smaller sections before generating embeddings.
+
+Chunking improves retrieval quality.
+
+---
+
+WHY CHUNKING IS NEEDED
+
+Embedding an entire book into a single vector is ineffective.
+
+Instead:
+
+Document
+
+↓
+
+Chunk 1
+
+Chunk 2
+
+Chunk 3
+
+↓
+
+Embeddings
+
+---
+
+CHUNK SIZE
+
+Chunk Size controls how much text is stored in each chunk.
+
+Small Chunks:
+
+Better precision
+
+Less context
+
+Large Chunks:
+
+More context
+
+More noise
+
+---
+
+CHUNK OVERLAP
+
+Overlap repeats content between neighboring chunks.
+
+Purpose:
+
+Preserve context across chunk boundaries.
+
+Example:
+
+Chunk 1:
+Sentence A
+Sentence B
+
+Chunk 2:
+Sentence B
+Sentence C
+
+---
+
+CHUNKING IN RAG
+
+Documents
+
+↓
+
+Chunking
+
+↓
+
+Embeddings
+
+↓
+
+Vector Database
+
+↓
+
+Retrieval
+
+---
+
+CHUNKING IN VIVA
+
+VIVA uses:
+
+RecursiveCharacterTextSplitter
+
+Chunk Size: 500
+
+Chunk Overlap: 100
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: Why is chunking important?
+
+A: It improves retrieval quality and relevance.
+
+Q: What is chunk overlap?
+
+A: Shared content between neighboring chunks.
+
+Q: What happens if chunks are too large?
+
+A: Retrieval becomes noisy.
+
+---
+
+IMPORTANT TERMS
+
+Chunk
+Chunk Size
+Chunk Overlap
+Text Splitter
+Retrieval
+Context

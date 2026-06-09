@@ -1,0 +1,143 @@
+TOPIC: RAG Pipeline
+
+DEFINITION
+
+A RAG pipeline combines retrieval systems with language models.
+
+---
+
+PIPELINE
+
+Documents
+
+↓
+
+Chunking
+
+↓
+
+Embeddings
+
+↓
+
+Vector Database
+
+↓
+
+Retriever
+
+↓
+
+Context
+
+↓
+
+LLM
+
+↓
+
+Answer
+
+---
+
+STEP 1
+
+Load Documents
+
+---
+
+STEP 2
+
+Chunk Documents
+
+---
+
+STEP 3
+
+Generate Embeddings
+
+---
+
+STEP 4
+
+Store in Vector Database
+
+---
+
+STEP 5
+
+Retrieve Relevant Chunks
+
+---
+
+STEP 6
+
+Inject Context into Prompt
+
+---
+
+STEP 7
+
+Generate Final Response
+
+---
+
+RAG PIPELINE IN VIVA
+
+Interview Notes
+
+↓
+
+Chunking
+
+↓
+
+Embeddings
+
+↓
+
+ChromaDB
+
+↓
+
+Retriever
+
+↓
+
+Evaluation Prompt
+
+↓
+
+Gemma
+
+↓
+
+Structured Feedback
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What are the main stages of a RAG pipeline?
+
+A: Chunking, embeddings, vector storage, retrieval, context injection, and generation.
+
+Q: Where are embeddings generated?
+
+A: After chunking and before vector storage.
+
+Q: What happens after retrieval?
+
+A: Retrieved context is inserted into the prompt.
+
+---
+
+IMPORTANT TERMS
+
+Pipeline
+Chunking
+Embedding
+Vector Database
+Retriever
+Context Injection
+Generation

@@ -1,0 +1,116 @@
+TOPIC: RAG vs Fine-Tuning
+
+DEFINITION
+
+RAG and Fine-Tuning are different techniques used to improve LLM performance.
+
+---
+
+RAG
+
+Adds external knowledge during inference.
+
+Workflow:
+
+Retriever
+
+↓
+
+Knowledge Base
+
+↓
+
+LLM
+
+Advantages:
+
+Updatable
+
+Cheaper
+
+No retraining
+
+Faster deployment
+
+---
+
+FINE-TUNING
+
+Updates model weights using additional training data.
+
+Advantages:
+
+Task specialization
+
+Behavior customization
+
+Improved domain performance
+
+---
+
+RAG VS FINE-TUNING
+
+RAG:
+
+Knowledge Problem
+
+Fine-Tuning:
+
+Behavior Problem
+
+---
+
+WHEN TO USE RAG
+
+Frequently changing knowledge
+
+Large document collections
+
+Enterprise knowledge bases
+
+Customer support systems
+
+---
+
+WHEN TO USE FINE-TUNING
+
+Consistent task behavior
+
+Domain-specific writing style
+
+Specialized outputs
+
+---
+
+VIVA USES RAG
+
+VIVA retrieves interview knowledge dynamically.
+
+No model retraining is required.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: Why use RAG instead of Fine-Tuning?
+
+A: Knowledge can be updated without retraining the model.
+
+Q: When should Fine-Tuning be used?
+
+A: When behavior or output style needs modification.
+
+Q: Which is cheaper?
+
+A: RAG is typically cheaper and easier to maintain.
+
+---
+
+IMPORTANT TERMS
+
+RAG
+Fine-Tuning
+Knowledge Base
+Retriever
+Inference
+Model Weights

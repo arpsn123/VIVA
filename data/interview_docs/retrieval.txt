@@ -1,0 +1,89 @@
+TOPIC: Retrieval
+
+DEFINITION
+
+Retrieval is the process of finding relevant information from a knowledge base.
+
+Retrieval is a core component of RAG systems.
+
+---
+
+WORKFLOW
+
+User Query
+
+↓
+
+Embedding
+
+↓
+
+Vector Search
+
+↓
+
+Top Results
+
+↓
+
+LLM
+
+---
+
+TOP-K RETRIEVAL
+
+The retriever returns the K most relevant results.
+
+Example:
+
+k = 3
+
+Returns the 3 most similar chunks.
+
+---
+
+RETRIEVAL QUALITY
+
+Retrieval quality depends on:
+
+Knowledge Base Design
+
+Chunking Strategy
+
+Embedding Quality
+
+Vector Search Quality
+
+---
+
+RETRIEVAL IN VIVA
+
+VIVA retrieves relevant interview knowledge before evaluating answers.
+
+This improves factual grounding.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What is retrieval?
+
+A: Finding relevant information from a knowledge base.
+
+Q: What is Top-K retrieval?
+
+A: Returning the K most relevant results.
+
+Q: What affects retrieval quality?
+
+A: Chunking, embeddings, and knowledge base design.
+
+---
+
+IMPORTANT TERMS
+
+Retriever
+Top-K
+Similarity Search
+Query
+Context

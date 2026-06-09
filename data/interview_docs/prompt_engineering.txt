@@ -1,0 +1,138 @@
+TOPIC: Prompt Engineering
+
+DEFINITION
+
+Prompt Engineering is the process of designing instructions that guide an LLM toward desired outputs.
+
+A prompt acts as the interface between a user and a language model.
+
+The quality of the prompt significantly affects response quality.
+
+---
+
+WHY PROMPT ENGINEERING MATTERS
+
+LLMs are general-purpose models.
+
+Without proper instructions, outputs may be:
+
+- Ambiguous
+- Incomplete
+- Inconsistent
+
+Prompt Engineering improves:
+
+- Accuracy
+- Consistency
+- Structure
+- Reliability
+
+---
+
+PROMPT COMPONENTS
+
+A well-designed prompt often contains:
+
+Role
+
+Task
+
+Context
+
+Output Format
+
+Example:
+
+You are a senior AI interviewer.
+
+Evaluate the candidate answer.
+
+Return output as JSON.
+
+---
+
+SYSTEM PROMPTS
+
+A system prompt defines model behavior.
+
+Example:
+
+You are a senior AI engineer.
+
+Answer professionally.
+
+System prompts typically have higher priority than user prompts.
+
+---
+
+FEW-SHOT PROMPTING
+
+Few-shot prompting provides examples.
+
+Example:
+
+Question:
+What is RAG?
+
+Answer:
+...
+
+Score:
+8
+
+The model learns expected behavior from examples.
+
+---
+
+COMMON PROMPTING TECHNIQUES
+
+Zero-Shot Prompting
+
+Few-Shot Prompting
+
+Chain of Thought
+
+Role Prompting
+
+Structured Output Prompting
+
+---
+
+PROMPT ENGINEERING IN VIVA
+
+VIVA uses PromptTemplates to:
+
+Generate interview questions.
+
+Evaluate candidate responses.
+
+Return structured JSON feedback.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What is Prompt Engineering?
+
+A: Designing prompts that guide LLM behavior and outputs.
+
+Q: Why is Prompt Engineering important?
+
+A: It improves output quality, reliability, and consistency.
+
+Q: What is Few-Shot Prompting?
+
+A: Providing examples to guide model behavior.
+
+---
+
+IMPORTANT TERMS
+
+Prompt
+System Prompt
+User Prompt
+PromptTemplate
+Few-Shot Prompting
+Zero-Shot Prompting
+Chain of Thought
+Structured Output

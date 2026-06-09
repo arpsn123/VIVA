@@ -1,0 +1,91 @@
+TOPIC: ChromaDB
+
+DEFINITION
+
+ChromaDB is an open-source vector database designed for AI applications.
+
+It is widely used in RAG systems.
+
+---
+
+FEATURES
+
+Stores embeddings
+
+Performs similarity search
+
+Supports metadata
+
+Easy Python integration
+
+Local deployment
+
+---
+
+WORKFLOW
+
+Documents
+
+↓
+
+Embeddings
+
+↓
+
+ChromaDB
+
+↓
+
+Retrieval
+
+↓
+
+LLM
+
+---
+
+WHY CHROMADB
+
+Simple setup
+
+Lightweight
+
+Python friendly
+
+Ideal for local AI projects
+
+---
+
+CHROMADB IN VIVA
+
+VIVA uses ChromaDB as its vector store.
+
+Knowledge base documents are embedded and stored inside ChromaDB.
+
+Retrievers query ChromaDB to obtain relevant context.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What is ChromaDB?
+
+A: An open-source vector database for AI applications.
+
+Q: Why is ChromaDB popular?
+
+A: Easy setup and strong integration with LangChain.
+
+Q: What does ChromaDB store?
+
+A: Embeddings and metadata.
+
+---
+
+IMPORTANT TERMS
+
+ChromaDB
+Vector Store
+Embeddings
+Retriever
+Metadata

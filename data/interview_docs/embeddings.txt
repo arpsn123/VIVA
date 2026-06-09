@@ -1,0 +1,125 @@
+TOPIC: Embeddings
+
+DEFINITION
+
+Embeddings are numerical vector representations of text.
+
+They capture semantic meaning rather than exact wording.
+
+Similar text produces similar vectors.
+
+---
+
+EXAMPLE
+
+Sentence:
+
+What is Machine Learning?
+
+↓
+
+Embedding Model
+
+↓
+
+[0.12, -0.44, 0.89, ...]
+
+---
+
+WHY EMBEDDINGS MATTER
+
+Embeddings enable:
+
+- Semantic Search
+- Similarity Search
+- Recommendation Systems
+- RAG Systems
+
+---
+
+SEMANTIC SIMILARITY
+
+Example:
+
+What is Machine Learning?
+
+Explain Machine Learning.
+
+These sentences have different words but similar meanings.
+
+Embedding vectors will be close together.
+
+---
+
+EMBEDDING MODELS
+
+Common Models:
+
+nomic-embed-text
+
+BGE
+
+E5
+
+Sentence Transformers
+
+OpenAI Embeddings
+
+---
+
+EMBEDDINGS IN RAG
+
+Documents
+
+↓
+
+Embeddings
+
+↓
+
+Vector Database
+
+↓
+
+Retrieval
+
+Embeddings are the foundation of retrieval systems.
+
+---
+
+EMBEDDINGS IN VIVA
+
+VIVA uses:
+
+nomic-embed-text
+
+through Ollama.
+
+Embeddings are generated for all knowledge base documents.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What is an embedding?
+
+A: A numerical vector representation of semantic meaning.
+
+Q: Why are embeddings important?
+
+A: They enable semantic search and retrieval.
+
+Q: What produces embeddings?
+
+A: Embedding models such as BGE, E5, Sentence Transformers, and nomic-embed-text.
+
+---
+
+IMPORTANT TERMS
+
+Embedding
+Vector
+Semantic Similarity
+Embedding Model
+Semantic Search
+Retrieval

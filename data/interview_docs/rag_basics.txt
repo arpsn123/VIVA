@@ -1,0 +1,89 @@
+TOPIC: Retrieval Augmented Generation (RAG)
+
+DEFINITION
+
+RAG combines information retrieval with language generation.
+
+Relevant information is retrieved before an LLM generates a response.
+
+---
+
+WHY RAG EXISTS
+
+LLMs may hallucinate.
+
+LLMs have knowledge cutoffs.
+
+RAG provides external knowledge.
+
+---
+
+WORKFLOW
+
+Question
+
+↓
+
+Retriever
+
+↓
+
+Knowledge Base
+
+↓
+
+Relevant Context
+
+↓
+
+LLM
+
+↓
+
+Answer
+
+---
+
+BENEFITS
+
+Reduced Hallucinations
+
+Improved Accuracy
+
+Updatable Knowledge
+
+No Retraining Required
+
+---
+
+RAG IN VIVA
+
+VIVA retrieves interview knowledge before evaluating candidate responses.
+
+This improves evaluation quality.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What is RAG?
+
+A: Retrieval Augmented Generation.
+
+Q: Why use RAG?
+
+A: To provide external knowledge to an LLM.
+
+Q: What problem does RAG solve?
+
+A: Hallucinations and stale knowledge.
+
+---
+
+IMPORTANT TERMS
+
+RAG
+Retriever
+Knowledge Base
+Context
+Hallucination

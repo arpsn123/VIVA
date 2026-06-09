@@ -1,0 +1,107 @@
+TOPIC: Vector Databases
+
+DEFINITION
+
+A Vector Database stores and searches embeddings.
+
+Unlike SQL databases, vector databases perform semantic similarity search.
+
+---
+
+WHY VECTOR DATABASES EXIST
+
+Traditional databases search for exact matches.
+
+Vector databases search for meaning.
+
+Example:
+
+Query:
+Automobile
+
+Document:
+Car
+
+Vector search can match both.
+
+---
+
+WORKFLOW
+
+Document
+
+↓
+
+Embedding
+
+↓
+
+Vector Database
+
+↓
+
+Similarity Search
+
+↓
+
+Relevant Results
+
+---
+
+SIMILARITY SEARCH
+
+The query is converted into an embedding.
+
+The database finds vectors closest to the query vector.
+
+Closest vectors are returned.
+
+---
+
+POPULAR VECTOR DATABASES
+
+ChromaDB
+
+Pinecone
+
+Qdrant
+
+Weaviate
+
+Milvus
+
+FAISS
+
+---
+
+VECTOR DATABASES IN VIVA
+
+VIVA uses ChromaDB.
+
+All knowledge base documents are stored as embeddings.
+
+---
+
+INTERVIEW QUESTIONS
+
+Q: What is a Vector Database?
+
+A: A database optimized for storing and searching embeddings.
+
+Q: Why not use SQL?
+
+A: SQL performs exact matching, not semantic similarity search.
+
+Q: What is similarity search?
+
+A: Finding vectors closest to a query vector.
+
+---
+
+IMPORTANT TERMS
+
+Vector Database
+Embedding
+Similarity Search
+Semantic Search
+Nearest Neighbor
