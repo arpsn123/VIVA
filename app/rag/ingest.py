@@ -51,3 +51,12 @@ for file in Path(
                 }
             )
         )
+        
+# Creating Vector DB
+
+db = Chroma.from_documents(
+    documents=documents,
+    embedding=embeddings,
+    persist_directory=
+    "data/vector_store"
+)

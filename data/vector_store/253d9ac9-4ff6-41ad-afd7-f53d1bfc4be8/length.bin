@@ -1,0 +1,19 @@
+---
+
+LIMITATIONS
+
+* Additional infrastructure
+* Embedding generation cost
+* Storage requirements
+* Retrieval quality depends on embeddings
+* ANN may sacrifice small amounts of accuracy
+
+---
+
+COMMON INTERVIEW QUESTIONS
+
+Q: What is a Vector Database?
+
+A: A specialized database optimized for storing and searching embeddings using similarity search.
+
+Q: Why not use SQL databases for semantic search?ÿÿ
