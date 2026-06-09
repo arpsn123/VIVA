@@ -6,7 +6,7 @@ def generate_question():
 
     result = question_chain.invoke(
         {
-            "topic": "Computer Vision"
+            "topic": "Vector Database"
         }
     )
 

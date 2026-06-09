@@ -1,17 +1,22 @@
 import json
+from app.rag.retriever import retrieve
+from app.langchain.chains import evaluation_chain
 
-from app.langchain.chains import (
-    evaluation_chain
-
-)
 
 def evaluate_answer(question, answer):
 
+    retrieved_docs = retrieve(question)
+
+    context = "\n\n".join([doc.page_content for doc in retrieved_docs])
+    
+    # for testing only : 
+    print("\nRETRIEVED CONTEXT:\n")
+    print(context)
+    print("\n" + "=" * 80 + "\n")
+
     result = evaluation_chain.invoke(
-        {
-            "question": question,
-            "answer": answer
-        })
+        {"context": context, "question": question, "answer": answer}
+    )
 
     response = result.content
 
@@ -22,12 +27,7 @@ def evaluate_answer(question, answer):
     except:
         return {
             "score": 0,
-            "strengths": [
-                "Failed to parse model output"
-            ],
-            "weaknesses": [
-                "Invalid JSON returned"
-            ],
-            "improvement":
-            "Check evaluator prompt"
+            "strengths": ["Failed to parse model output"],
+            "weaknesses": ["Invalid JSON returned"],
+            "improvement": "Check evaluator prompt",
         }

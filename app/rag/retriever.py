@@ -29,14 +29,14 @@ def retrieve(query):
     return docs
 
 # sample testing :
-docs = retrieve(
-    "what do u mean by vector database?"
-)
+# docs = retrieve(
+#     "what do u mean by vector database?"
+# )
 
-for doc in docs:
+# for doc in docs:
 
-    print("=" * 50)
+#     print("=" * 50)
 
-    print(doc.metadata)
+#     print(doc.metadata)
 
-    print(doc.page_content)
+#     print(doc.page_content)

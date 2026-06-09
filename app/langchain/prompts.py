@@ -21,6 +21,10 @@ evaluation_prompt = PromptTemplate.from_template(
 """
 You are an expert technical interviewer.
 Evaluate the candidate answer.
+Use the provided context to evaluate the candidate answer.
+
+Context:
+{context}
 
 Question:
 {question}
@@ -49,6 +53,9 @@ No markdown.
 No explanation.
 
 Example: 
+
+Context: 
+Overfitting Theory
 
 Question:
 What is overfitting?
