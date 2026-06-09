@@ -15,19 +15,6 @@ db = Chroma(
 )
 
 
-results = db.similarity_search_with_score(
-    "Retrieval Augmented Generation",
-    k=5
-)
-
-for doc, score in results:
-
-    print("\n")
-    print(doc.metadata)
-    print(score)
-    print(doc.page_content[:200])
-
-
 retriever = db.as_retriever(
     search_kwargs={
         "k": 1
@@ -43,13 +30,13 @@ def retrieve(query):
 
 # sample testing :
 docs = retrieve(
-    "Yolo"
+    "What is a large lnguage model?"
 )
 
-# for doc in docs:
+for doc in docs:
 
-#     print("=" * 50)
+    print("=" * 50)
 
-#     print(doc.metadata)
+    print(doc.metadata)
 
-#     print(doc.page_content)
+    print(doc.page_content)

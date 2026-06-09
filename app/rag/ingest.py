@@ -54,21 +54,6 @@ for file in Path(
         
 # Creating Vector DB
 
-print(
-    len(documents)
-)
-
-sources = set()
-
-for doc in documents:
-    sources.add(
-        doc.metadata["source"]
-    )
-
-print(sources)
-
-
-
 db = Chroma.from_documents(
     documents=documents,
     embedding=embeddings,
