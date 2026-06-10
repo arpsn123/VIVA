@@ -1,46 +1,42 @@
 from app.llm.interviewer_with_langchain import generate_question
 from app.llm.evaluator_with_langchain import evaluate_answer
-
-print("\n===== VIVA =====\n")
+from app.interview.difficulty import DifficultyManager
 
 # adding this so that the VIVA REMEMBERS WHAT EVER WE TALKED EARLIER;
-from app.interview.session import (
-    InterviewSession
-)
+from app.interview.session import InterviewSession
+from app.interview.report import generate_report
+import random
+
+TOPICS = ["LLM", "Prompt Engineering", "Embeddings", "Vector Database", "RAG", "Token"]
 
 session = InterviewSession()
+difficulty_manager = DifficultyManager()
 
+TOTAL_QUESTIONS = 3
 
-question = generate_question()
+difficulty = "medium"
+# topic = "Embeddings"
 
-print("QUESTION:")
-print(question)
+for i in range(TOTAL_QUESTIONS):
+    topic = random.choice(TOPICS)
+    question = generate_question(topic, difficulty)
 
-answer = input("\nYOUR ANSWER:\n")
+    print("QUESTION:")
+    print(question)
 
-feedback = evaluate_answer(question, answer)
+    answer = input("\nYOUR ANSWER:\n")
 
+    feedback = evaluate_answer(question, answer)
 
-# after evaluation, i am adding the question + answer + feedback to the session so that the machine can remember;
-session.add_result(
-    question,
-    answer,
-    feedback
-)
+    # after evaluation, i am adding the question + answer + feedback to the session so that the machine can remember;
+    session.add_result(question, answer, feedback)
 
+    # taking score for the difficulty
+    score = feedback["score"]
+    difficulty = difficulty_manager.get_next_difficulty(score)
 
-print("\nFEEDBACK:\n")
-# print(feedback) # this would be good for the text style response, but as i am returing a JSON in feedback i need a upgradation;
-print("\nSCORE:")
-print(feedback["score"])
+ 
+report = generate_report(session.get_history())
 
-print("\nSTRENGTHS:")
-for item in feedback["strengths"]:
-    print("-", item)
+print(f"\nFinal Report saved in : ", report)
 
-print("\nWEAKNESSES:")
-for item in feedback["weaknesses"]:
-    print("-", item)
-
-print("\nIMPROVEMENT:")
-print(feedback["improvement"])

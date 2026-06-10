@@ -1,6 +1,6 @@
 from langchain_core.prompts import PromptTemplate
-question_prompt = PromptTemplate.from_template(
-"""
+
+question_prompt = PromptTemplate.from_template("""
 You are a senior AI Engineer conducting a technical interview.
 
 Ask exactly one interview question.
@@ -13,12 +13,24 @@ Act like a real interviewer.
 
 Topic:
 {topic}
-"""
-)
+
+Generate ONE {difficulty} level interview question.
+
+Difficulty Rules:
+
+easy:
+Basic definitions and concepts.
+
+medium:
+Conceptual understanding and practical usage.
+
+hard:
+Real-world scenarios, tradeoffs,
+architecture decisions and debugging.
+""")
 
 
-evaluation_prompt = PromptTemplate.from_template(
-"""
+evaluation_prompt = PromptTemplate.from_template("""
 You are an expert technical interviewer.
 Evaluate the candidate answer.
 Use the provided context to evaluate the candidate answer.
@@ -75,5 +87,4 @@ Output:
   ],
   "improvement": "Explain impact on unseen data."
 }}
-"""
-)
+""")

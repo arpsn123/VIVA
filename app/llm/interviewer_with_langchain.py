@@ -2,11 +2,12 @@ from app.langchain.chains import (
     question_chain
 )
 
-def generate_question():
+def generate_question(topic, difficulty):
 
     result = question_chain.invoke(
         {
-            "topic": "Vector Database"
+            "topic": topic,
+            "difficulty": difficulty
         }
     )
 
