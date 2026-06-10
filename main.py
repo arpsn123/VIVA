@@ -3,6 +3,14 @@ from app.llm.evaluator_with_langchain import evaluate_answer
 
 print("\n===== VIVA =====\n")
 
+# adding this so that the VIVA REMEMBERS WHAT EVER WE TALKED EARLIER;
+from app.interview.session import (
+    InterviewSession
+)
+
+session = InterviewSession()
+
+
 question = generate_question()
 
 print("QUESTION:")
@@ -11,6 +19,15 @@ print(question)
 answer = input("\nYOUR ANSWER:\n")
 
 feedback = evaluate_answer(question, answer)
+
+
+# after evaluation, i am adding the question + answer + feedback to the session so that the machine can remember;
+session.add_result(
+    question,
+    answer,
+    feedback
+)
+
 
 print("\nFEEDBACK:\n")
 # print(feedback) # this would be good for the text style response, but as i am returing a JSON in feedback i need a upgradation;
