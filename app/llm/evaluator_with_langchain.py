@@ -9,11 +9,6 @@ def evaluate_answer(question, answer):
 
     context = "\n\n".join([doc.page_content for doc in retrieved_docs])
     
-    # for testing only : 
-    print("\nRETRIEVED CONTEXT:\n")
-    print(context)
-    print("\n" + "=" * 80 + "\n")
-
     result = evaluation_chain.invoke(
         {"context": context, "question": question, "answer": answer}
     )

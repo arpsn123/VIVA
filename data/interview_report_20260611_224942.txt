@@ -1,0 +1,57 @@
+VIVA INTERVIEW REPORT
+
+Average Score: 1.67/10
+Total Questions: 3
+
+INTERVIEW DETAILS
+
+Question 1
+Question: When processing text for a Large Language Model, can you explain what a "token" is and why it is used instead of processing text character by character?
+Answer: It is a broken set of characters, it can be words, it can be a full sentence or it can be a full character voice and you said why not a character by character because if I say a character by character, then the number...
+Score: 1/10
+
+Strengths:
+• Acknowledged that tokens relate to characters and words
+
+Weaknesses:
+• Failed to provide a clear, technical definition of a token.
+• Did not address the 'why' (the efficiency and sub-word processing benefits).
+• The answer is rambling and lacks technical coherence.
+
+Improvement Suggestion:
+Define a token as the basic unit of text processed by the model, emphasizing that it allows the model to handle vocabulary and sub-word units efficiently.
+
+----------------------------------------
+
+Question 2
+Question: When discussing word embeddings, can you briefly explain the fundamental difference between a word embedding and a one-hot encoding?
+Answer: What embedding is contextually embedding, it incorporates a long mathematical process and one hot encoding is just 0 and 1 hard encoding.
+Score: 4/10
+
+Strengths:
+• Identified that embeddings involve a complex mathematical process, unlike one-hot encoding.
+
+Weaknesses:
+• The explanation is vague and lacks precise technical terminology.
+• Did not explicitly state what the embedding captures (semantic meaning/relationships) versus what one-hot encoding captures (binary presence).
+
+Improvement Suggestion:
+Explain that embeddings capture semantic relationships in a vector space, while one-hot encoding is a sparse, binary representation of presence/absence.
+
+----------------------------------------
+
+Question 3
+Question: When discussing text embeddings, can you briefly explain the fundamental difference between a word embedding and a sentence embedding?
+Answer: Yes, warden batting is a very generating poor ward and the centrist embedding is a embedding generated for sentence. That's why both the differences and warden bedding follows the semantic release.
+Score: 0/10
+
+Strengths:
+
+Weaknesses:
+• The answer is incoherent and does not address the technical question.
+• The candidate failed to provide any meaningful explanation regarding the difference between word and sentence embeddings.
+
+Improvement Suggestion:
+Explain that word embeddings represent individual tokens, while sentence embeddings capture the contextual relationship and meaning of an entire sequence.
+
+----------------------------------------

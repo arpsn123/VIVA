@@ -21,6 +21,3 @@ def record_audio(filename="input.wav", duration=10):
     return filename
 
 
-audio_file = record_audio()
-text = transcribe(audio_file)
-print(text)
