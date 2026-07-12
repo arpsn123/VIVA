@@ -1,5 +1,36 @@
 
-## 01. Product Overview
+<h1 align="center">🎙️ VIVA</h1>
+
+<h2 align="center">
+A Modular Voice AI Platform for Intelligent Technical Interviewing, Context-Aware Candidate Evaluation, and Automated Assessment
+</h2>
+
+<div align="center">
+    <img src="https://img.shields.io/github/stars/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=ffca28" alt="GitHub Repo Stars">
+    <img src="https://img.shields.io/github/forks/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=00aaff" alt="GitHub Forks">
+    <img src="https://img.shields.io/github/watchers/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=00e676" alt="GitHub Watchers">
+</div>
+
+<div align="center">
+    <img src="https://img.shields.io/github/issues/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=ea4335" alt="GitHub Issues">
+    <img src="https://img.shields.io/github/issues-pr/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=ff9100" alt="GitHub Pull Requests">
+</div>
+
+<div align="center">
+    <img src="https://img.shields.io/github/last-commit/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=673ab7" alt="GitHub Last Commit">
+    <img src="https://img.shields.io/github/contributors/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=388e3c" alt="GitHub Contributors">
+    <img src="https://img.shields.io/github/repo-size/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=303f9f" alt="GitHub Repo Size">
+</div>
+
+<div align="center">
+    <img src="https://img.shields.io/github/languages/count/arpsn123/VIVA?style=for-the-badge&logo=github&logoColor=white&color=607d8b" alt="GitHub Language Count">
+    <img src="https://img.shields.io/github/languages/top/arpsn123/VIVA?style=for-the-badge&logo=python&logoColor=white&color=4caf50" alt="GitHub Top Language">
+</div>
+
+<div align="center">
+    <img src="https://img.shields.io/badge/AI%20Platform-Voice%20AI-6A1B9A?style=for-the-badge&logo=openai&logoColor=white">
+    <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge">
+</div>
 
 **VIVA (Voice Interview & Verification Assistant)** is an end-to-end Voice AI platform designed to simulate technical interviews through natural spoken conversations. It integrates Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Speech-to-Text (STT), and Text-to-Speech (TTS) into a unified interview pipeline capable of generating questions, evaluating responses, and delivering real-time spoken feedback.
 
@@ -104,7 +135,7 @@ Built around a modular architecture, each subsystem operates independently while
 
 ```
 
-## 02. Technology Stack
+## Technology Stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
@@ -126,7 +157,7 @@ Built around a modular architecture, each subsystem operates independently while
 
 ---
 
-## 03. LLM Engine
+## LLM Engine
 
 ### Overview
 
@@ -162,7 +193,7 @@ At this stage, the LLM Engine supports:
 
 ---
 
-## 04. Retrieval-Augmented Generation (RAG)
+## Retrieval-Augmented Generation (RAG)
 
 ### Overview
 
@@ -178,21 +209,21 @@ Retrieval-Augmented Generation
 
 │
 
-├── 4.1 LangChain
+├── 01 LangChain
 
-├── 4.2 Embeddings
+├── 02 Embeddings
 
-├── 4.3 Chunking
+├── 03 Chunking
 
-├── 4.4 Vector Database
+├── 04 Vector Database
 
-├── 4.5 Retrieval
+├── 05 Retrieval
 
-└── 4.6 Context Injection
+└── 06 Context Injection
 
 ```
 
-### 4.1 LangChain
+### 01 LangChain
 
 #### Overview
 
@@ -248,7 +279,7 @@ result = question_chain.invoke(
 
 ---
 
-### 4.2 Embeddings
+### 02 Embeddings
 
 #### Overview
 
@@ -304,7 +335,7 @@ The query embedding is then compared against the stored document embeddings to i
 
 ---
 
-### 4.3 Chunking
+### 03 Chunking
 
 #### Overview
 
@@ -384,7 +415,7 @@ The generated chunks are then passed to the embedding pipeline, forming the inpu
 
 ---
 
-### 4.4 Vector Database
+### 04 Vector Database
 
 #### Overview
 
@@ -416,7 +447,7 @@ This allows VIVA to trace retrieved information back to the original knowledge b
 
 ---
 
-### 4.5 Retrieval
+### 05 Retrieval
 
 #### Overview
 
@@ -448,7 +479,7 @@ The retrieval process is based on **semantic similarity**, not exact keyword mat
 
 ---
 
-### 4.6 Context Injection
+### 06 Context Injection
 
 #### Overview
 
@@ -496,7 +527,7 @@ The language model now evaluates the response using both the retrieved knowledge
 
 ---
 
-## 05. Interview Engine
+## Interview Engine
 
 ### Overview
 
@@ -554,7 +585,7 @@ report = generate_report(
 
 ---
 
-## 06. Voice Pipeline
+## Voice Pipeline
 
 ### Overview
 
