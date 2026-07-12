@@ -32,6 +32,8 @@ A Modular Voice AI Platform for Intelligent Technical Interviewing, Context-Awar
     <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge">
 </div>
 
+<br>
+
 **VIVA (Voice Interview & Verification Assistant)** is an end-to-end Voice AI platform designed to simulate technical interviews through natural spoken conversations. It integrates Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Speech-to-Text (STT), and Text-to-Speech (TTS) into a unified interview pipeline capable of generating questions, evaluating responses, and delivering real-time spoken feedback.
 
 Built around a modular architecture, each subsystem operates independently while contributing to a single conversational workflow. This design enables VIVA to remain scalable, maintainable, and easily extensible for future AI capabilities.
@@ -94,6 +96,16 @@ Built around a modular architecture, each subsystem operates independently while
                   +----------------------+
 
 ```
+---
+VIVA | End-to-End Voice AI Technical Interview Platform Demo
+
+https://github.com/user-attachments/assets/82d528c6-d21e-44fb-9068-34f397e3453c
+
+*For demonstration purposes, the video has been accelerated to 3× during candidate input to keep the walkthrough concise while preserving the complete interview workflow*
+
+
+
+---
 
 ## Technology Stack
 
