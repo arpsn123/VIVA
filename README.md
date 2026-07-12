@@ -183,7 +183,7 @@ Retrieval-Augmented Generation
 
 ```
 
-### 01 LangChain
+### 01. LangChain
 
 #### Overview
 
@@ -239,7 +239,7 @@ result = question_chain.invoke(
 
 ---
 
-### 02 Embeddings
+### 02. Embeddings
 
 #### Overview
 
@@ -295,7 +295,7 @@ The query embedding is then compared against the stored document embeddings to i
 
 ---
 
-### 03 Chunking
+### 03. Chunking
 
 #### Overview
 
@@ -375,7 +375,7 @@ The generated chunks are then passed to the embedding pipeline, forming the inpu
 
 ---
 
-### 04 Vector Database
+### 04. Vector Database
 
 #### Overview
 
@@ -407,7 +407,7 @@ This allows VIVA to trace retrieved information back to the original knowledge b
 
 ---
 
-### 05 Retrieval
+### 05. Retrieval
 
 #### Overview
 
@@ -439,7 +439,7 @@ The retrieval process is based on **semantic similarity**, not exact keyword mat
 
 ---
 
-### 06 Context Injection
+### 06. Context Injection
 
 #### Overview
 
