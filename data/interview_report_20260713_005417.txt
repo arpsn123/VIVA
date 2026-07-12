@@ -1,0 +1,57 @@
+VIVA INTERVIEW REPORT
+
+Average Score: 5.00/10
+Total Questions: 3
+
+INTERVIEW DETAILS
+
+Question 1
+Question: What is the fundamental purpose of generating vector embeddings for text data?
+Answer: The fundamental purpose of generating vector embeddings for text data is to convert unstructured text into a numerical format that captures its semantic meaning and context. Since machine learning models cannot process raw human language, embeddings translate words or sentences into coordinates in a multi-dimensional space. This allows AI to understand the relationships between concepts.
+Score: 10/10
+
+Strengths:
+• Accurately defines embeddings as a conversion of unstructured text into a numerical format.
+• Correctly identifies the core function of capturing semantic meaning and context.
+• Explains the necessity of embeddings for machine learning models (translating language into coordinates to understand relationships).
+
+Weaknesses:
+• None identified; the answer is comprehensive and technically sound.
+
+Improvement Suggestion:
+Explicitly mention that this process enables semantic search and retrieval, linking the theoretical concept to its practical application.
+
+----------------------------------------
+
+Question 2
+Question: In a large-scale production environment, you are deploying a multi-lingual LLM. Describe the architectural trade-offs between using a fixed vocabulary tokenizer (like BPE) versus a subword tokenization approach (like SentencePiece), specifically focusing on how each method impacts the token count, context window utilization, and overall inference latency when handling highly specialized, domain-specific code and complex natural language queries.
+Answer: this question is very very difficult for me please ask a easier one
+Score: 0/10
+
+Strengths:
+
+Weaknesses:
+• Failed to answer the technical question.
+• Demonstrated inability to handle complex, multi-faceted technical inquiries.
+• Avoided the core topic instead of providing an evaluation of architectural trade-offs.
+
+Improvement Suggestion:
+Provide a detailed comparison of BPE vs. SentencePiece regarding tokenization efficiency, context management, and latency in specialized domain contexts.
+
+----------------------------------------
+
+Question 3
+Question: In the context of a Vector Database, what is the primary difference between a traditional relational database and a vector database?
+Answer: vector database actually used to store the facial or any embeddings and traditional database store the normal data
+Score: 5/10
+
+Strengths:
+• Correctly identifies that vector databases store embeddings (vectors) while traditional databases store normal data.
+
+Weaknesses:
+• The answer is too superficial and does not explain the functional difference or the mechanism (similarity search) that makes vector databases unique.
+
+Improvement Suggestion:
+Explain that the primary difference is the type of data stored (high-dimensional vectors vs. structured records) and how vector databases enable efficient similarity search based on proximity.
+
+----------------------------------------

@@ -23,7 +23,7 @@
 
 # for i in range(TOTAL_QUESTIONS):
 #     topic = random.choice(TOPICS)
-    
+
 #     print("1. Generating Question")
 #     question = generate_question(topic, difficulty)
 
@@ -42,7 +42,7 @@
 
 #     print("3. Listening...")
 #     audio_file = record_audio(duration=15)
-    
+
 #     print("4. Transcribing")
 #     answer = transcribe(audio_file)
 #     print("\nYOU SAID:")
@@ -94,16 +94,17 @@ from rich.table import Table
 
 console = Console()
 
+console.print()
+
+console.print("[bold cyan]Select Interview Mode[/bold cyan]")
+
+console.print("1. Voice Interview")
+console.print("2. Text Demo")
+
+mode = console.input("\n[bold yellow]> [/bold yellow]").strip()
 
 
-TOPICS = [
-    "LLM",
-    "Prompt Engineering",
-    "Embeddings",
-    "Vector Database",
-    "RAG",
-    "Token"
-]
+TOPICS = ["LLM", "Prompt Engineering", "Embeddings", "Vector Database", "RAG", "Token"]
 
 TOTAL_QUESTIONS = 3
 
@@ -118,7 +119,7 @@ console.print(
     Panel.fit(
         "[bold cyan]🎙️ VIVA[/bold cyan]\n"
         "[white]Voice Interview & Verification Assistant[/white]",
-        border_style="bright_blue"
+        border_style="bright_blue",
     )
 )
 
@@ -131,14 +132,12 @@ modules = [
     "Loading ChromaDB...",
     "Loading Whisper...",
     "Loading Voice Pipeline...",
-    "Initializing Interview Engine..."
+    "Initializing Interview Engine...",
 ]
 
 for module in modules:
 
-    with console.status(
-        f"[cyan]{module}[/cyan]"
-    ):
+    with console.status(f"[cyan]{module}[/cyan]"):
 
         time.sleep(0.7)
 
@@ -155,16 +154,9 @@ for i in range(TOTAL_QUESTIONS):
 
     topic = random.choice(TOPICS)
 
-    console.print(
-        Rule(
-            f"[bold yellow]Question {i+1}/{TOTAL_QUESTIONS}[/bold yellow]"
-        )
-    )
+    console.print(Rule(f"[bold yellow]Question {i+1}/{TOTAL_QUESTIONS}[/bold yellow]"))
 
-    question = generate_question(
-        topic,
-        difficulty
-    )
+    question = generate_question(topic, difficulty)
 
     console.print()
 
@@ -172,27 +164,35 @@ for i in range(TOTAL_QUESTIONS):
         Panel(
             question,
             title="[bold cyan]Interview Question[/bold cyan]",
-            border_style="cyan"
+            border_style="cyan",
         )
     )
 
-    text_to_speech(question)
+    # text_to_speech(question)
+    # console.print()
+    # console.print(
+    #     "[bold yellow]🎤 Listening...[/bold yellow]"
+    # )
+    # audio_file = record_audio(
+    #     duration=15
+    # )
+    # console.print(
+    #     "[bold blue]📝 Transcribing...[/bold blue]"
+    # )
+    # answer = transcribe(audio_file)
 
-    console.print()
+    if mode == "1":
 
-    console.print(
-        "[bold yellow]🎤 Listening...[/bold yellow]"
-    )
+        text_to_speech(question)
+        console.print()
+        console.print("[bold yellow]🎤 Listening...[/bold yellow]")
+        audio_file = record_audio(duration=15)
+        console.print("[bold blue]📝 Transcribing...[/bold blue]")
+        answer = transcribe(audio_file)
 
-    audio_file = record_audio(
-        duration=15
-    )
-
-    console.print(
-        "[bold blue]📝 Transcribing...[/bold blue]"
-    )
-
-    answer = transcribe(audio_file)
+    else:
+        console.print()
+        answer = console.input("[bold green]💬 Your Answer\n> [/bold green]")
 
     console.print()
 
@@ -200,58 +200,31 @@ for i in range(TOTAL_QUESTIONS):
         Panel(
             answer,
             title="[bold green]Candidate Response[/bold green]",
-            border_style="green"
+            border_style="green",
         )
     )
 
-    console.print(
-        "[bold magenta]🧠 Evaluating Answer...[/bold magenta]"
-    )
+    console.print("[bold magenta]🧠 Evaluating Answer...[/bold magenta]")
 
-    feedback = evaluate_answer(
-        question,
-        answer
-    )
+    feedback = evaluate_answer(question, answer)
 
-    session.add_result(
-        question,
-        answer,
-        feedback
-    )
+    session.add_result(question, answer, feedback)
 
     score = feedback["score"]
 
-    difficulty = difficulty_manager.get_next_difficulty(
-        score
-    )
+    difficulty = difficulty_manager.get_next_difficulty(score)
 
     improvement = feedback["improvement"]
 
+    table = Table(title="Evaluation Report")
 
-    table = Table(
-        title="Evaluation Report"
-    )
+    table.add_column("Metric", style="cyan", justify="left")
 
-    table.add_column(
-        "Metric",
-        style="cyan",
-        justify="left"
-    )
+    table.add_column("Result", style="green")
 
-    table.add_column(
-        "Result",
-        style="green"
-    )
+    table.add_row("Score", f"{score}/10")
 
-    table.add_row(
-        "Score",
-        f"{score}/10"
-    )
-
-    table.add_row(
-        "Improvement",
-        improvement
-    )
+    table.add_row("Improvement", improvement)
 
     console.print()
 
@@ -262,15 +235,14 @@ for i in range(TOTAL_QUESTIONS):
     {improvement}
     """
 
-    text_to_speech(
-        spoken_feedback
-    )
+    # text_to_speech(spoken_feedback)
+    if mode == "1":
+
+        text_to_speech(spoken_feedback)
 
 console.rule("[bold green]Interview Completed[/bold green]")
 
-report = generate_report(
-    session.get_history()
-)
+report = generate_report(session.get_history())
 
 console.print()
 
@@ -278,6 +250,6 @@ console.print(
     Panel.fit(
         f"[bold green]✓ Interview Report Generated[/bold green]\n\n{report}",
         title="Report",
-        border_style="green"
+        border_style="green",
     )
 )
